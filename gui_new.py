@@ -11,8 +11,6 @@ layout = GridLayout(cols=1,row_force_default=True, row_default_height=30)
 
 class Quant_Select_Dropdown(DropDown):
     global layout
-    #平均分5个输入框的位置[],[],[],[],[]
-    #接收用户输入，如果输入为1，创建一个Object框，2就创建两个...
     def Details_about_Objects(self,quant): #receive how many objects user wants to have in the scene
         for num in range(quant):
             Object = Object_Declaration()
