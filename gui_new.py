@@ -7,8 +7,24 @@ from kivy.uix.label import Label
 from kivy.uix.dropdown import DropDown
 from kivy.properties import NumericProperty,StringProperty
 
+layout = GridLayout(cols=1,row_force_default=True, row_default_height=30)
+
 class Quant_Select_Dropdown(DropDown):
-    quant = NumericProperty(0)
+    global layout
+    #平均分5个输入框的位置[],[],[],[],[]
+    #接收用户输入，如果输入为1，创建一个Object框，2就创建两个...
+    def Details_about_Objects(self,quant): #receive how many objects user wants to have in the scene
+        for num in range(quant):
+            Object = Object_Declaration()
+            Select_button = Button(text='Object NO.'+str(num+1)+':', size_hint_x=None, width=200)
+            Select_button.bind(on_release=Object.open)
+            Object.bind(on_select=lambda instance, x: setattr(Select_button, 'text', x))
+            layout.add_widget(Select_button)    
+
+class Object_Declaration(DropDown):
+    pass
+         
+
 
 
 class GreyHatsApp(App):
@@ -16,17 +32,22 @@ class GreyHatsApp(App):
         super(GreyHatsApp,self).__init__()
 # use floatlayout for a prettier display 
     def build(self):
-        layout = GridLayout(cols=1,row_force_default=True, row_default_height=30)
-        label = Label(text='How many objects do you want in the scene?')
+        global layout
+        label = Label(text='How many objects do you want to have in the scene?')
         layout.add_widget(label)
-        mainbutton = Button(text='Please choose', size_hint_x=None, width=300)
+        mainbutton = Button(text='Please select', size_hint_x=None, width=300)
         Quant_Select = Quant_Select_Dropdown()
-        print Quant_Select.quant
         mainbutton.bind(on_release=Quant_Select.open)
-
         Quant_Select.bind(on_select=lambda instance, x: setattr(mainbutton, 'text', x))
         layout.add_widget(mainbutton)
+
         return layout
+
+    
+
+
+
+        
 
 if __name__ == '__main__':
     GreyHatsApp().run()

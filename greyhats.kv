@@ -1,13 +1,12 @@
 
 <Quant_Select_Dropdown>:
-    quant = NumericProperty(0)
     Button:
         text: '1'
         size_hint_y: None
         height: 30
         on_release: 
             root.select('1')
-            root.quant = 1
+            root.Details_about_Objects(1)
 
     Button:
         text: '2'
@@ -15,25 +14,50 @@
         height: 30
         on_release: 
             root.select('2')
-            root.quant = 2
+            root.Details_about_Objects(2)
+
+            # create two instances of Object_Declaration here
     Button:
         text: '3'
         size_hint_y: None
         height: 30
         on_release: 
             root.select('3')
-            root.quant = 3
+            root.Details_about_Objects(3)
     Button:
         text: '4'
         size_hint_y: None
         height: 30
         on_release: 
             root.select('4')
-            root.quant = 4
+            root.Details_about_Objects(4)
     Button:
         text: '5'
         size_hint_y: None
         height: 30
         on_release: 
             root.select('5')
-            root.quant = 5
+            root.Details_about_Objects(5)
+
+<Object_Declaration>:
+    Button:
+        text: 'Sphere'
+        size_hint_y: None
+        height: 30
+        on_release: 
+            root.select('Sphere')
+
+    Button:
+        text: 'Tetrahedron'
+        size_hint_y: None
+        height: 30
+        on_release: 
+            root.select('Tetrahedron')
+            
+    Button:
+        text: 'Cube'
+        size_hint_y: None
+        height: 30
+        on_release: 
+            root.select('Cube')
+        

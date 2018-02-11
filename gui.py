@@ -15,7 +15,7 @@ class InterfaceApp(App):
         dropdown = DropDown()
         root = FloatLayout()
         mainbutton = Button(text='Shapes', size_hint=(.1, .05),pos_hint={'x':.2, 'y':.9})
-        mainbutton.bind(on_release=dropdown.open)
+        mainbutton.bind(on_r=dropdown.open)
         for index in range(len(Shapes_list)):
             btn = Button(text=Shapes_list[index],size_hint=(None, None),height=20)
             # btn.bind(on_release= self.selection(index))
